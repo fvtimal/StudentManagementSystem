@@ -13,8 +13,28 @@ class Student(User):
 
         self.__rollNo = rollNo
         self.__program = program
-        self.__marks = gpa
+        self.__gpa = gpa
         self.__sem = sem
+        self.__status
+
+    def statusCheck(self):
+        if gpa >= 3.5:
+            return "Excellent"
+        elif gpa >= 2.5:
+            return "Good"
+        else:
+            return "Warning"
+
+
+    def displayProfile(self):
+        print("Student ID:", self.__rollNo)
+        print(super.getName(), "|", super.getEmail())
+        print("program: " + self.__program)
+        print("semester: " + self.__sem)
+        print("gpa: " + self.__gpa)
+        print("status:" + self.statusCheck())
+
+
 
 
 
