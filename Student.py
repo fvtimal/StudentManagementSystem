@@ -18,12 +18,17 @@ class Student(User):
         self.__status
 
     def statusCheck(self):
-        if gpa >= 3.5:
+        if self.__gpa >= 3.5:
             return "Excellent"
-        elif gpa >= 2.5:
+        elif self.__gpa >= 2.5:
             return "Good"
         else:
             return "Warning"
+
+    def toString(self):
+        return (f"{self.__rollNo},{self.name},{self.email},"
+                f"{self.__program},{self.__gpa},{self.__sem},"
+                f"{self.__status}\n")
 
 
     def displayProfile(self):
