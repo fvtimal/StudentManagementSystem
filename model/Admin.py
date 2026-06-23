@@ -48,7 +48,7 @@ class Admin(User):
         students = []
 
         try:
-            file = open("students.txt", "r")
+            file = open("../data/students.txt", "r")
 
             for line in file:
                 std = Student.from_string(line.strip())
@@ -69,7 +69,7 @@ class Admin(User):
     @classmethod
     def save_students(cls):
 
-        file = open("students.txt","w")
+        file = open("../data/students.txt", "w")
 
         for std in Admin.students:
             file.write(std.toString())

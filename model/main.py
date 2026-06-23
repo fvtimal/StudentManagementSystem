@@ -1,4 +1,4 @@
-from Admin import Admin
+from model.Admin import Admin
 
 
 admin = Admin("46546","aila","fg@gmail.com","coodinator")
