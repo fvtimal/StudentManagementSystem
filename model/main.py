@@ -1,97 +1,85 @@
 from model.Admin import Admin
-import sys
-
-password = "admin123"
-admin = Admin("1000","aila","fg@gmail.com","coodinator")
-
-user = input("enter user ID:")
-if (admin.getID() == user):
-    pw = input("enter password:")
-    if (pw == password):
-        while True:
-
-            print("Student Management System")
-            print("1. add student")
-            print("2. delete student")
-            print("3. display students")
-            print("4. search by program")
-            print("5. display sorted by GPA")
-            print("6. exit")
-
-            choice = input("enter choice: ")
-
-            if choice == "1":
-
-                id = input("User ID:")
-                name = input("Student name: ")
-                email = input("Student email: ")
-                program = input("Program: ")
-                gpa = float(input("GPA: "))
-                sem = input("Semester: ")
-
-                admin.addStudent(
-                    id,
-                    name,
-                    email,
-                    program,
-                    gpa,
-                    sem
-                )
 
 
-            elif choice == "2":
-
-                roll = input("Enter roll number: ")
-
-                admin.deleteStudent(roll)
+admin = Admin("46546","aila","fg@gmail.com","coodinator")
 
 
-            elif choice == "3":
+while True:
 
-                for student in Admin.students:
-                    student.displayProfile()
-                    print("\n")
+    print("Student Management System")
+    print("1. add student")
+    print("2. delete student")
+    print("3. display students")
+    print("4. search by program")
+    print("5. display sorted by GPA")
+    print("6. exit")
+
+
+    choice = input("enter choice: ")
+
+
+    if choice == "1":
+
+        id = input("User ID:")
+        name = input("Student name: ")
+        email = input("Student email: ")
+        program = input("Program: ")
+        gpa = float(input("GPA: "))
+        sem = input("Semester: ")
+
+        admin.addStudent(
+            id,
+            name,
+            email,
+            program,
+            gpa,
+            sem
+        )
+
+
+    elif choice == "2":
+
+        roll = input("Enter roll number: ")
+
+        admin.deleteStudent(roll)
+
+
+    elif choice == "3":
+
+        for student in Admin.students:
+            student.displayProfile()
+            print("\n")
 
 
 
-            elif choice == "4":
+    elif choice == "4":
 
-                program = input("Enter program: ")
+        program = input("Enter program: ")
 
-                results = admin.searchByProgram(program)
+        results = admin.searchByProgram(program)
 
-                if results:
+        if results:
 
-                    for std in results:
-                        std.displayProfile()
+            for std in results:
+                std.displayProfile()
 
-                        print("-----------------")
+                print("-----------------")
 
-                else:
-                    print("no students found in that program")
-
-
-
-            elif choice == "5":
-                admin.displaySortedByGPA()
+        else:
+            print("no students found in that program")
 
 
 
-            elif choice == "6":
-                print("Exiting...")
-
-                break
+    elif choice == "5":
+        admin.displaySortedByGPA()
 
 
-            else:
-                print("Invalid choice")
+
+    elif choice == "6":
+        print("Exiting...")
+
+        break
 
 
     else:
-        print("incorrect password....")
-        sys.exit()
-
-else:
-    print("No such user.....")
-    sys.exit()
-
+        print("Invalid choice")
