@@ -1,16 +1,59 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from Admin import Admin
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+admin = Admin("46546","aila","fg@gmail.com","coodinator")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+while True:
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    print("Student Management System")
+    print("1. add student")
+    print("2. delete student")
+    print("3. display students")
+    print("4. exit")
+
+
+    choice = input("enter choice: ")
+
+
+    if choice == "1":
+
+        id = input("User ID:")
+        name = input("Student name: ")
+        email = input("Student email: ")
+        program = input("Program: ")
+        gpa = float(input("GPA: "))
+        sem = input("Semester: ")
+
+        admin.addStudent(
+            id,
+            name,
+            email,
+            program,
+            gpa,
+            sem
+        )
+
+
+    elif choice == "2":
+
+        roll = input("Enter roll number: ")
+
+        admin.deleteStudent(roll)
+
+
+    elif choice == "3":
+
+        for student in Admin.students:
+            student.displayProfile()
+            print("\n")
+
+
+    elif choice == "4":
+
+        print("Exiting...")
+        break
+
+
+    else:
+        print("Invalid choice")

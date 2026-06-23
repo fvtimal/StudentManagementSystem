@@ -13,31 +13,24 @@ class Admin(User):
         if not Admin.students:
             Admin.students = Admin.load_students()
 
-    def addStudent(self,name,email,program,gpa,sem):
-        std = Student(name,email,program,gpa,sem)
+
+    def addStudent(self,id,name,email,program,gpa,sem):
+        std = Student(id,name,email,program,gpa,sem)
         Admin.students.append(std)
+        Admin.save_students()
 
         print("student successfully added")
 
     def deleteStudent(self,rollNo):
 
         for std in Admin.students:
-            if std.rollNo == rollNo:
+            if std.getRollNo() == rollNo:
                 Admin.students.remove(std)
+                Admin.save_students()
                 print("Student deleted")
                 return
 
         print("student not found")
-
-
-
-
-
-
-
-
-
-
 
     @classmethod
     def load_students(cls):
@@ -45,7 +38,7 @@ class Admin(User):
         students = []
 
         try:
-            file = open("students.txt","r")
+            file = open("students.txt", "r")
 
             for line in file:
                 std = Student.from_string(line.strip())
@@ -53,9 +46,12 @@ class Admin(User):
 
             file.close()
 
+            if students:
+                last = int(students[-1].getRollNo().replace("ST", ""))
+                Student.roll = last + 1
+
         except FileNotFoundError:
             print("no file found")
-
 
         return students
 
@@ -66,7 +62,7 @@ class Admin(User):
         file = open("students.txt","w")
 
         for std in Admin.students:
-            file.write(std.to_string())
+            file.write(std.toString())
 
         file.close()
 
