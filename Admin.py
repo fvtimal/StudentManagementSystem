@@ -32,6 +32,16 @@ class Admin(User):
 
         print("student not found")
 
+    def searchByProgram(self, program):
+        return [std for std in Admin.students if std.getProgram().lower() == program.lower()]
+
+    def displaySortedByGPA(self):
+        sorted_students = sorted(Admin.students, key=lambda s: s.getGPA(), reverse=True)
+        for std in sorted_students:
+            std.displayProfile()
+            print("---")
+
+
     @classmethod
     def load_students(cls):
 

@@ -20,6 +20,15 @@ class Student(User):
     def getRollNo(self):
         return self.__rollNo
 
+    def getProgram(self):
+        return self.__program
+
+    def getGPA(self):
+        return self.__gpa
+
+    def getSem(self):
+        return self.__sem
+
     def statusCheck(self):
         if self.__gpa >= 3.5:
             return "Excellent"

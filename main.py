@@ -10,7 +10,9 @@ while True:
     print("1. add student")
     print("2. delete student")
     print("3. display students")
-    print("4. exit")
+    print("4. search by program")
+    print("5. display sorted by GPA")
+    print("6. exit")
 
 
     choice = input("enter choice: ")
@@ -49,9 +51,33 @@ while True:
             print("\n")
 
 
+
     elif choice == "4":
 
+        program = input("Enter program: ")
+
+        results = admin.searchByProgram(program)
+
+        if results:
+
+            for std in results:
+                std.displayProfile()
+
+                print("-----------------")
+
+        else:
+            print("no students found in that program")
+
+
+
+    elif choice == "5":
+        admin.displaySortedByGPA()
+
+
+
+    elif choice == "6":
         print("Exiting...")
+
         break
 
 
