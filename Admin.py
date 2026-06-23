@@ -17,10 +17,26 @@ class Admin(User):
         std = Student(name,email,program,gpa,sem)
         Admin.students.append(std)
 
+        print("student successfully added")
+
+    def deleteStudent(self,rollNo):
+
+        for std in Admin.students:
+            if std.rollNo == rollNo:
+                Admin.students.remove(std)
+                print("Student deleted")
+                return
+
+        print("student not found")
 
 
 
-    
+
+
+
+
+
+
 
 
     @classmethod
@@ -42,6 +58,17 @@ class Admin(User):
 
 
         return students
+
+
+    @classmethod
+    def save_students(cls):
+
+        file = open("students.txt","w")
+
+        for std in Admin.students:
+            file.write(std.to_string())
+
+        file.close()
 
 
 
