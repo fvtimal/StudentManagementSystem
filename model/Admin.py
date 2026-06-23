@@ -77,5 +77,8 @@ class Admin(User):
         file.close()
 
 
+    def revert_test(self):
+        print("file two")
+
 
 

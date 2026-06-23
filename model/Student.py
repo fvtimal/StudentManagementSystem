@@ -69,3 +69,6 @@ class Student(User):
         obj._Student__sem     = sem
         obj._Student__status  = obj.statusCheck()
         return obj
+
+    def revert_test(self):
+        print("file 1")
