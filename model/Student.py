@@ -68,5 +68,5 @@ class Student(User):
         obj._Student__gpa     = gpa
         obj._Student__sem     = sem
         obj._Student__status  = obj.statusCheck()
-        print("hell")
+        print("hello")
         return obj
